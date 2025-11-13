@@ -1,6 +1,6 @@
 import pandas as pd
 
-def classify_turn_phases(angle_df, threshold=15):
+def classify_turn_phases(angle_df, threshold=5):
     phases = []
     for _, row in angle_df.iterrows():
         l_angle = row["left_inclination"]
@@ -13,4 +13,5 @@ def classify_turn_phases(angle_df, threshold=15):
         else:
             phases.append("neutral")
     return pd.Series(phases)
+
 
