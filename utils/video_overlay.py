@@ -19,7 +19,8 @@ def overlay_phase_on_video(input_path, output_path, phase_series):
         color = (0, 255, 0) if phase == "neutral" else (255, 0, 0) if phase == "left_turn" else (0, 0, 255)
         label = f"Phase: {phase}"
 
-        cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.0, color, 2)
+        # ラベル描画
+        cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, color, 3)
         out.write(frame)
         frame_idx += 1
 
