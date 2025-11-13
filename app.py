@@ -1,6 +1,7 @@
 import streamlit as st
 from utils.mediapipe_utils import extract_inclination_angles
 from utils.phase_classifier import classify_turn_phases
+from utils.video_overlay import overlay_phase_on_video
 
 st.title("アルペンスキー内傾角フェーズ分析")
 
@@ -19,8 +20,8 @@ if video_file:
         st.write("フェーズ別統計")
 
         st.dataframe(angle_df.groupby("phase")[["left_inclination", "right_inclination"]].mean())
-from utils.video_overlay import overlay_phase_on_video
 
 if st.button("フェーズ付き動画を生成"):
     overlay_phase_on_video("temp.mp4", "output_with_phase.mp4", angle_df["phase"])
     st.video("output_with_phase.mp4")
+
